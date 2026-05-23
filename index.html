@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bricks Engineering Consultants</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #2c3547;
+    --brick: #b94030;
+    --brick-light: #d04535;
+    --cream: #f8f5f0;
+    --white: #ffffff;
+    --gray: #8a8f9a;
+    --light: #eceae5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(44,53,71,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--brick);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    color: var(--white);
+    letter-spacing: 0.12em;
+  }
+
+  .nav-logo span { color: var(--brick); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--brick); }
+
+  .nav-cta {
+    background: var(--brick);
+    color: var(--white) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--brick-light) !important; color: var(--white) !important; }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+    background: var(--navy);
+    flex-direction: column;
+    padding: 1.5rem 5vw 2rem;
+    gap: 1.2rem;
+    border-bottom: 2px solid var(--brick);
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600; font-size: 1rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--brick); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.03) 59px, rgba(255,255,255,0.03) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.03) 59px, rgba(255,255,255,0.03) 60px);
+  }
+
+  .hero-left {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5vw 6rem 8vw;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(185,64,48,0.15);
+    border: 1px solid var(--brick);
+    color: var(--brick);
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    width: fit-content;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-tag::before { content: ''; width: 20px; height: 2px; background: var(--brick); }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+
+  h1 em { color: var(--brick); font-style: normal; }
+
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--brick); color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    border: none; border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--brick-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    animation: fadeUp 0.7s 0.6s ease both;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; color: var(--white); letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--brick); }
+
+  .stat-label {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.2rem;
+  }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6rem 5vw;
+  }
+
+  .hero-visual {
+    position: relative; width: 100%; max-width: 480px;
+  }
+
+  .building-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+    backdrop-filter: blur(4px);
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .building-icon {
+    width: 80px; height: 80px;
+    background: rgba(185,64,48,0.15);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; color: var(--white); letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-sub {
+    font-size: 0.85rem; color: rgba(255,255,255,0.45);
+    font-weight: 300; line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .progress-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .progress-item label {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 0.35rem;
+  }
+
+  .progress-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--brick); border-radius: 2px; animation: grow 1.5s 0.8s ease both; transform-origin: left; }
+
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .floating-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--brick);
+    color: var(--white);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(185,64,48,0.4);
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .badge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; letter-spacing: 0.04em; line-height: 1;
+  }
+
+  .badge-text {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+
+  /* ── MARQUEE STRIP ── */
+  .marquee-strip {
+    background: var(--brick);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex; gap: 3rem;
+    animation: marquee 25s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.85);
+    display: inline-flex; align-items: center; gap: 1.5rem;
+  }
+
+  .marquee-item::after { content: '◆'; font-size: 0.5rem; color: rgba(255,255,255,0.5); }
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 8vw; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: var(--brick); font-size: 0.72rem;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--brick); }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-desc {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: var(--gray); max-width: 540px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--white); }
+
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; margin-bottom: 4rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--light);
+    border: 1.5px solid var(--light);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--brick);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover { background: #fdfcfb; }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem; color: var(--light);
+    letter-spacing: 0.04em; line-height: 1;
+    margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-num { color: rgba(185,64,48,0.12); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: rgba(185,64,48,0.08);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-icon { background: rgba(185,64,48,0.15); }
+
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 0.06em;
+    color: var(--navy); margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem; font-weight: 300;
+    line-height: 1.75; color: var(--gray);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    padding: 7rem 8vw;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-block {
+    background: var(--navy);
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .about-img-inner {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: rgba(255,255,255,0.06);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.2;
+    user-select: none;
+  }
+
+  .about-accent {
+    position: absolute; bottom: -2rem; right: -2rem;
+    width: 120px; height: 120px;
+    background: var(--brick);
+    border-radius: 4px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: 0 12px 40px rgba(185,64,48,0.35);
+    color: var(--white); text-align: center;
+  }
+
+  .about-accent-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem; letter-spacing: 0.04em; line-height: 1;
+  }
+
+  .about-accent-text {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.85; margin-top: 0.2rem;
+  }
+
+  .checklist { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    font-size: 0.92rem; font-weight: 400; line-height: 1.5; color: var(--navy);
+  }
+
+  .check-icon {
+    width: 20px; height: 20px; min-width: 20px;
+    background: rgba(185,64,48,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brick); font-size: 0.65rem;
+    margin-top: 2px;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy); }
+  #projects h2 { color: var(--white); }
+  #projects .section-desc { color: rgba(255,255,255,0.45); }
+
+  .projects-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; margin-bottom: 3.5rem; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .project-card {
+    background: var(--navy);
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 0.3s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--brick);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover { background: rgba(255,255,255,0.03); }
+  .project-card:hover::before { transform: scaleY(1); }
+
+  .project-thumb {
+    height: 160px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .project-card:hover .project-thumb { background: rgba(185,64,48,0.12); }
+
+  .project-type {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--brick); margin-bottom: 0.5rem;
+  }
+
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem; letter-spacing: 0.06em;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+
+  .project-loc {
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--cream); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    padding: 2.2rem;
+    border-radius: 4px;
+    border-top: 3px solid var(--brick);
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 4rem; line-height: 0.8;
+    color: var(--brick); opacity: 0.25;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .testimonial-text {
+    font-size: 0.92rem; font-weight: 300;
+    line-height: 1.8; color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+
+  .author-avatar {
+    width: 40px; height: 40px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem; color: var(--white); letter-spacing: 0.04em;
+  }
+
+  .author-name {
+    font-size: 0.85rem; font-weight: 700;
+    color: var(--navy); letter-spacing: 0.03em;
+  }
+
+  .author-role {
+    font-size: 0.73rem; font-weight: 300;
+    color: var(--gray); margin-top: 1px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    padding: 7rem 8vw;
+  }
+
+  #contact h2 { color: var(--white); }
+  #contact .section-desc { color: rgba(255,255,255,0.45); }
+
+  .contact-info { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    background: rgba(185,64,48,0.15);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--brick);
+  }
+
+  .contact-label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem; color: var(--white);
+    font-weight: 300;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-field label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 0.8rem 1rem;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    transition: border-color 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-field select option { background: var(--navy); color: var(--white); }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--brick); }
+
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--brick); color: var(--white);
+    padding: 1rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    border: none; border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .form-submit:hover { background: var(--brick-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1e2535;
+    padding: 3rem 8vw;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    gap: 1.5rem;
+    border-top: 2px solid var(--brick);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; letter-spacing: 0.12em;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--brick); }
+
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none; flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--brick); }
+
+  .footer-copy {
+    font-size: 0.75rem; color: rgba(255,255,255,0.25);
+    font-weight: 300;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 8vw; }
+
+    #about {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    #contact {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    section { padding: 5rem 5vw; }
+    #about { padding: 5rem 5vw; }
+    #contact { padding: 5rem 5vw; }
+    footer { padding: 2rem 5vw; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-left { padding: 4rem 5vw; }
+
+    .services-header { flex-direction: column; align-items: flex-start; }
+    .projects-header { flex-direction: column; align-items: flex-start; }
+
+    .about-accent { width: 100px; height: 100px; bottom: -1.5rem; right: -1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BRICKS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#testimonials" onclick="closeMenu()">Clients</a>
+  <a href="#contact" onclick="closeMenu()">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Engineering Consultants</div>
+    <h1>Structuring<br>A <em>Better</em><br>Tomorrow</h1>
+    <p class="hero-sub">From concept to completion, Bricks Engineering delivers precise structural solutions for commercial, residential, and industrial projects.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start Your Project</a>
+      <a href="#projects" class="btn-outline">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">15<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">300<span>+</span></div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">98<span>%</span></div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="building-card">
+        <div class="building-icon">🏗️</div>
+        <div class="card-title">Current Project Status</div>
+        <div class="card-sub">Live overview of active engineering engagements</div>
+        <div class="progress-list">
+          <div class="progress-item">
+            <label><span>Structural Analysis</span><span>92%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>Foundation Design</span><span>78%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>Code Compliance</span><span>100%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-badge">
+        <div class="badge-num">A+</div>
+        <div class="badge-text">Safety<br>Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Structural Engineering</span>
+    <span class="marquee-item">Foundation Design</span>
+    <span class="marquee-item">Seismic Analysis</span>
+    <span class="marquee-item">Construction Oversight</span>
+    <span class="marquee-item">Load Calculations</span>
+    <span class="marquee-item">Code Compliance</span>
+    <span class="marquee-item">Forensic Engineering</span>
+    <span class="marquee-item">Retrofit Solutions</span>
+    <span class="marquee-item">Structural Engineering</span>
+    <span class="marquee-item">Foundation Design</span>
+    <span class="marquee-item">Seismic Analysis</span>
+    <span class="marquee-item">Construction Oversight</span>
+    <span class="marquee-item">Load Calculations</span>
+    <span class="marquee-item">Code Compliance</span>
+    <span class="marquee-item">Forensic Engineering</span>
+    <span class="marquee-item">Retrofit Solutions</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Do</div>
+      <h2>Our Core Services</h2>
+    </div>
+    <p class="section-desc">Comprehensive engineering solutions tailored to every stage of your construction project.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🏛️</div>
+      <div class="service-title">Structural Engineering</div>
+      <p class="service-desc">Full-spectrum structural analysis and design for buildings of all types, ensuring safety, compliance, and long-term performance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">🔩</div>
+      <div class="service-title">Foundation Design</div>
+      <p class="service-desc">Expert geotechnical evaluation and foundation engineering to support structures on any soil condition or terrain.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">📐</div>
+      <div class="service-title">Seismic Analysis</div>
+      <p class="service-desc">Advanced seismic performance assessment and retrofit design to protect structures and occupants from earthquake risk.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">🏗️</div>
+      <div class="service-title">Construction Oversight</div>
+      <p class="service-desc">On-site engineering supervision ensuring that construction adheres to approved plans, standards, and specifications.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Forensic Engineering</div>
+      <p class="service-desc">Detailed investigation and analysis of structural failures, defects, and damage for legal, insurance, or remediation purposes.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">📋</div>
+      <div class="service-title">Code Compliance</div>
+      <p class="service-desc">Thorough review and documentation to ensure all designs meet current local, national, and international building codes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-visual">
+    <div class="about-img-block">
+      <div class="about-img-inner">BRICKS<br>ENGINEERING<br>CONSULTANTS</div>
+    </div>
+    <div class="about-accent">
+      <div class="about-accent-num">15+</div>
+      <div class="about-accent-text">Years of<br>Excellence</div>
+    </div>
+  </div>
+
+  <div class="about-content">
+    <div class="section-tag">Who We Are</div>
+    <h2>Built on Expertise,<br>Driven by Precision</h2>
+    <p class="section-desc">Since our founding, Bricks Engineering Consultants has been the trusted partner for developers, architects, and contractors who demand rigorous, reliable structural solutions.</p>
+    <ul class="checklist">
+      <li>
+        <span class="check-icon">✓</span>
+        Licensed structural engineers with multi-disciplinary expertise across residential, commercial, and industrial sectors.
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        Cutting-edge analysis software combined with decades of hands-on field experience for every project.
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        Transparent communication and on-time delivery — every project, every time.
+      </li>
+      <li>
+        <span class="check-icon">✓</span>
+        A legacy of 300+ completed projects across multiple states, from small renovations to large-scale developments.
+      </li>
+    </ul>
+    <div style="margin-top:2.5rem;">
+      <a href="#contact" class="btn-primary">Partner With Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-tag" style="color:var(--brick)">Our Work</div>
+      <h2>Featured Projects</h2>
+    </div>
+    <p class="section-desc">A selection of landmark projects delivered with precision and excellence.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb">🏢</div>
+      <div class="project-type">Commercial</div>
+      <div class="project-name">Meridian Office Tower</div>
+      <div class="project-loc">📍 Downtown Metro District</div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏘️</div>
+      <div class="project-type">Residential</div>
+      <div class="project-name">Riverside Luxury Condos</div>
+      <div class="project-loc">📍 Waterfront Precinct</div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏭</div>
+      <div class="project-type">Industrial</div>
+      <div class="project-name">Apex Distribution Hub</div>
+      <div class="project-loc">📍 Eastside Industrial Zone</div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🌉</div>
+      <div class="project-type">Infrastructure</div>
+      <div class="project-name">Central Park Pedestrian Bridge</div>
+      <div class="project-loc">📍 City Park Authority</div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏫</div>
+      <div class="project-type">Institutional</div>
+      <div class="project-name">Westfield Community College</div>
+      <div class="project-loc">📍 West Campus Campus</div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏗️</div>
+      <div class="project-type">Mixed-Use</div>
+      <div class="project-name">Harbor Point Development</div>
+      <div class="project-loc">📍 Harborside District</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag">Client Voice</div>
+  <h2>What Our Clients Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Bricks Engineering's thoroughness on our high-rise project gave us confidence at every phase. Their structural insight saved us both time and cost during construction.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JM</div>
+        <div>
+          <div class="author-name">James Morrison</div>
+          <div class="author-role">Project Director, Morrison Developments</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">From the first consultation to permit approval, the team was professional, responsive, and deeply knowledgeable. Absolutely our go-to structural firm.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">SR</div>
+        <div>
+          <div class="author-name">Sandra Reyes</div>
+          <div class="author-role">Principal Architect, Reyes Design Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">The seismic retrofit work Bricks performed on our aging facility was outstanding. Compliant, on-budget, and completed ahead of schedule.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">TN</div>
+        <div>
+          <div class="author-name">Thomas Nguyen</div>
+          <div class="author-role">Facilities Manager, Apex Industrial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div>
+    <div class="section-tag">Reach Out</div>
+    <h2>Let's Build<br>Something Great</h2>
+    <p class="section-desc">Ready to start your project? Get in touch and our team will respond within one business day.</p>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Office Address</div>
+          <div class="contact-value">1200 Construction Ave, Suite 400<br>Metro City, MC 10001</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+1 (800) 274-2573</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">info@bricksengineering.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Business Hours</div>
+          <div class="contact-value">Monday – Friday, 8:00 AM – 6:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" placeholder="John">
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Doe">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Email Address</label>
+      <input type="email" placeholder="john@company.com">
+    </div>
+    <div class="form-field">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+1 (555) 000-0000">
+    </div>
+    <div class="form-field">
+      <label>Project Type</label>
+      <select>
+        <option value="">Select a service...</option>
+        <option>Structural Engineering</option>
+        <option>Foundation Design</option>
+        <option>Seismic Analysis</option>
+        <option>Construction Oversight</option>
+        <option>Forensic Engineering</option>
+        <option>Code Compliance</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Project Details</label>
+      <textarea placeholder="Tell us about your project — size, timeline, location, and any specific challenges..."></textarea>
+    </div>
+    <button class="form-submit" onclick="handleSubmit(this)">Send Message →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BRICKS<span>.</span> Engineering</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Bricks Engineering Consultants. All rights reserved.</div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Form submit
+  function handleSubmit(btn) {
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#2c3547';
+    btn.style.cursor = 'default';
+    btn.disabled = true;
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .project-card, .testimonial-card, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
