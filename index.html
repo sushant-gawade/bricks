@@ -46,6 +46,15 @@
   }
 
   .nav-logo span { color: var(--brick); }
+  .nav-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.2s;
+  }
+  .nav-logo-img:hover { opacity: 0.85; }
+
 
   .nav-links {
     display: flex; gap: 2.5rem; list-style: none;
@@ -512,13 +521,26 @@
   .project-card:hover::before { transform: scaleY(1); }
 
   .project-thumb {
-    height: 160px;
+    height: 200px;
     background: rgba(255,255,255,0.05);
     border-radius: 2px;
     display: flex; align-items: center; justify-content: center;
     font-size: 3rem;
     margin-bottom: 1.5rem;
     transition: background 0.3s;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .project-thumb img {
+    transform: scale(1.06);
   }
 
   .project-card:hover .project-thumb { background: rgba(185,64,48,0.12); }
@@ -538,6 +560,15 @@
   .project-loc {
     font-size: 0.82rem; font-weight: 300;
     color: rgba(255,255,255,0.4);
+  }
+
+  .project-detail {
+    font-size: 0.75rem; font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    line-height: 1.5;
   }
 
   /* ── TESTIMONIALS ── */
@@ -787,48 +818,85 @@
   }
 
   /* ── RESPONSIVE ── */
+  /* ── RESPONSIVE: TABLET (1024px) ── */
   @media (max-width: 1024px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
     .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-
     #hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    .hero-left { padding: 5rem 8vw; }
-
-    #about {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    #contact {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
+    .hero-left { padding: 5rem 6vw; }
+    #about { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 6vw; }
+    #contact { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 6vw; }
+    section { padding: 6rem 6vw; }
   }
 
+  /* ── RESPONSIVE: MOBILE (768px) ── */
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
 
-    section { padding: 5rem 5vw; }
-    #about { padding: 5rem 5vw; }
-    #contact { padding: 5rem 5vw; }
-    footer { padding: 2rem 5vw; }
+    section { padding: 4rem 5vw; }
+    #about { padding: 4rem 5vw; grid-template-columns: 1fr; gap: 2.5rem; }
+    #contact { padding: 4rem 5vw; grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { padding: 2rem 5vw; flex-direction: column; align-items: flex-start; gap: 1rem; }
 
     .services-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-
     .form-row { grid-template-columns: 1fr; }
 
+    h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
+    h2 { font-size: clamp(2rem, 7vw, 3rem); }
+
+    .hero-left { padding: 3.5rem 5vw 4rem; }
     .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
-    .hero-left { padding: 4rem 5vw; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
 
     .services-header { flex-direction: column; align-items: flex-start; }
     .projects-header { flex-direction: column; align-items: flex-start; }
 
-    .about-accent { width: 100px; height: 100px; bottom: -1.5rem; right: -1rem; }
+    .about-accent { width: 90px; height: 90px; bottom: -1rem; right: -0.5rem; }
+    .about-accent-num { font-size: 2rem; }
+
+    .project-thumb { height: 180px; }
+    .service-card { padding: 1.8rem; }
+    .testimonial-card { padding: 1.6rem; }
+
+    .footer-links { gap: 1rem; }
+    .footer-copy { font-size: 0.7rem; }
+
+    .whatsapp-float { bottom: 1.2rem; right: 1.2rem; }
+    .wa-btn { width: 50px; height: 50px; }
+    .wa-btn svg { width: 24px; height: 24px; }
+  }
+
+  /* ── RESPONSIVE: SMALL MOBILE (480px) ── */
+  @media (max-width: 480px) {
+    nav { padding: 0 4vw; }
+    section { padding: 3.5rem 4vw; }
+    #about { padding: 3.5rem 4vw; }
+    #contact { padding: 3.5rem 4vw; }
+    footer { padding: 1.8rem 4vw; }
+
+    .hero-left { padding: 3rem 4vw 3.5rem; }
+    .hero-tag { font-size: 0.65rem; }
+    .hero-stats { gap: 1rem; }
+    .stat-num { font-size: 2.2rem; }
+
+    .service-card { padding: 1.5rem; }
+    .service-title { font-size: 1.2rem; }
+
+    .project-thumb { height: 160px; }
+    .project-name { font-size: 1.1rem; }
+
+    .contact-item { gap: 0.75rem; }
+    .contact-icon { width: 36px; height: 36px; min-width: 36px; font-size: 0.9rem; }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea { font-size: 16px; /* prevent iOS zoom */ }
   }
 </style>
 </head>
@@ -841,6 +909,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="#testimonials">Clients</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
@@ -853,6 +922,7 @@
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
   <a href="#testimonials" onclick="closeMenu()">Clients</a>
   <a href="#contact" onclick="closeMenu()">Get a Quote</a>
 </div>
@@ -1035,43 +1105,61 @@
     <p class="section-desc">A selection of landmark projects delivered with precision and excellence.</p>
   </div>
   <div class="projects-grid">
+
     <div class="project-card">
-      <div class="project-thumb">🏢</div>
-      <div class="project-type">Commercial</div>
-      <div class="project-name">Meridian Office Tower</div>
-      <div class="project-loc">📍 Downtown Metro District</div>
-    </div>
-    <div class="project-card">
-      <div class="project-thumb">🏘️</div>
+      <div class="project-thumb"><img src="./1.jpeg" alt="Godrej Properties Nonadanga" onerror="this.parentElement.innerHTML='🏗️'"></div>
       <div class="project-type">Residential</div>
-      <div class="project-name">Riverside Luxury Condos</div>
-      <div class="project-loc">📍 Waterfront Precinct</div>
+      <div class="project-name">Godrej Properties – Nonadanga</div>
+      <div class="project-loc">📍 Kolkata</div>
+      <div class="project-detail">G + 2 Podium + 35 Floors &bull; 4 Towers &bull; &gt;5L Sq.Ft.</div>
     </div>
+
     <div class="project-card">
-      <div class="project-thumb">🏭</div>
-      <div class="project-type">Industrial</div>
-      <div class="project-name">Apex Distribution Hub</div>
-      <div class="project-loc">📍 Eastside Industrial Zone</div>
+      <div class="project-thumb"><img src="./2.jpeg" alt="Duville Riverdale Kharadi" onerror="this.parentElement.innerHTML='🏗️'"></div>
+      <div class="project-type">Residential</div>
+      <div class="project-name">Duville Riverdale – B6/B7/B8</div>
+      <div class="project-loc">📍 Kharadi, Pune</div>
+      <div class="project-detail">Stilt + 3 Parking + 30 Floors &bull; 3 Towers &bull; &gt;5L Sq.Ft.</div>
     </div>
+
     <div class="project-card">
-      <div class="project-thumb">🌉</div>
-      <div class="project-type">Infrastructure</div>
-      <div class="project-name">Central Park Pedestrian Bridge</div>
-      <div class="project-loc">📍 City Park Authority</div>
+      <div class="project-thumb"><img src="./3.jpeg" alt="Delta Greenville Thane" onerror="this.parentElement.innerHTML='🏗️'"></div>
+      <div class="project-type">Re-Development</div>
+      <div class="project-name">Delta Greenville</div>
+      <div class="project-loc">📍 Thane</div>
+      <div class="project-detail">G + 6 Podium + 45 Floors &bull; 3 Towers &bull; &gt;5L Sq.Ft.</div>
     </div>
+
     <div class="project-card">
-      <div class="project-thumb">🏫</div>
-      <div class="project-type">Institutional</div>
-      <div class="project-name">Westfield Community College</div>
-      <div class="project-loc">📍 West Campus Campus</div>
+      <div class="project-thumb"><img src="./4.jpeg" alt="Atlantaa Enclave Thane" onerror="this.parentElement.innerHTML='🏗️'"></div>
+      <div class="project-type">Re-Development</div>
+      <div class="project-name">Atlantaa Enclave</div>
+      <div class="project-loc">📍 Thane</div>
+      <div class="project-detail">G + 6 Podium + 45 Floors &bull; 2 Towers &bull; &gt;5L Sq.Ft.</div>
     </div>
+
     <div class="project-card">
-      <div class="project-thumb">🏗️</div>
-      <div class="project-type">Mixed-Use</div>
-      <div class="project-name">Harbor Point Development</div>
-      <div class="project-loc">📍 Harborside District</div>
+      <div class="project-thumb"><img src="./5.jpeg" alt="Nxtra by Airtel Navi Mumbai" onerror="this.parentElement.innerHTML='🏗️'"></div>
+      <div class="project-type">Commercial — Data Centre</div>
+      <div class="project-name">Nxtra by Airtel</div>
+      <div class="project-loc">📍 Navi Mumbai</div>
+      <div class="project-detail">G + 10 Typical + Terrace &bull; &gt;5L Sq.Ft.</div>
     </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><img src="./6.jpeg" alt="Suroj Buildcon Data Centre" onerror="this.parentElement.innerHTML='🏗️'"></div>
+      <div class="project-type">Commercial — Data Centre</div>
+      <div class="project-name">Suroj Buildcon Data Centre</div>
+      <div class="project-loc">📍 Navi Mumbai</div>
+      <div class="project-detail">G + 6 Typical + Terrace &bull; &gt;5L Sq.Ft.</div>
+    </div>
+
   </div>
+
+  <div style="text-align:center; margin-top:3rem;">
+    <a href="portfolio.html" class="btn-primary" style="display:inline-block;">View All Projects →</a>
+  </div>
+
 </section>
 
 <!-- TESTIMONIALS -->
@@ -1127,21 +1215,21 @@
         <div class="contact-icon">📍</div>
         <div>
           <div class="contact-label">Office Address</div>
-          <div class="contact-value">1200 Construction Ave, Suite 400<br>Metro City, MC 10001</div>
+          <div class="contact-value">Bricks Engineering Consultants<br>4 Floor Devgiri Building 411038</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">📞</div>
         <div>
           <div class="contact-label">Phone</div>
-          <div class="contact-value">+1 (800) 274-2573</div>
+          <div class="contact-value">+91 9309157291</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value">info@bricksengineering.com</div>
+          <div class="contact-value">contact@bricksengineering.com</div>
         </div>
       </div>
       <div class="contact-item">
@@ -1158,24 +1246,24 @@
     <div class="form-row">
       <div class="form-field">
         <label>First Name</label>
-        <input type="text" placeholder="John">
+        <input id="firstName" type="text" placeholder="John">
       </div>
       <div class="form-field">
         <label>Last Name</label>
-        <input type="text" placeholder="Doe">
+        <input id="lastName" type="text" placeholder="Doe">
       </div>
     </div>
     <div class="form-field">
       <label>Email Address</label>
-      <input type="email" placeholder="john@company.com">
+      <input id="emailAddr" type="email" placeholder="john@company.com">
     </div>
     <div class="form-field">
       <label>Phone Number</label>
-      <input type="tel" placeholder="+1 (555) 000-0000">
+      <input id="phoneNum" type="tel" placeholder="+91 00000 00000">
     </div>
     <div class="form-field">
       <label>Project Type</label>
-      <select>
+      <select id="projectType">
         <option value="">Select a service...</option>
         <option>Structural Engineering</option>
         <option>Foundation Design</option>
@@ -1188,9 +1276,10 @@
     </div>
     <div class="form-field">
       <label>Project Details</label>
-      <textarea placeholder="Tell us about your project — size, timeline, location, and any specific challenges..."></textarea>
+      <textarea id="projectDetails" placeholder="Tell us about your project — size, timeline, location, and any specific challenges..."></textarea>
     </div>
-    <button class="form-submit" onclick="handleSubmit(this)">Send Message →</button>
+    <div id="formMsg" style="display:none; margin-bottom:1rem; padding:0.75rem 1rem; border-radius:4px; font-size:0.88rem; font-weight:600;"></div>
+    <button class="form-submit" id="submitBtn" onclick="handleSubmit(this)">Send Message →</button>
   </div>
 </div>
 
@@ -1201,6 +1290,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 Bricks Engineering Consultants. All rights reserved.</div>
@@ -1231,12 +1321,68 @@
     mobileMenu.classList.remove('open');
   }
 
-  // Form submit
-  function handleSubmit(btn) {
-    btn.textContent = 'Message Sent ✓';
-    btn.style.background = '#2c3547';
-    btn.style.cursor = 'default';
-    btn.disabled = true;
+  async function handleSubmit(btn) {
+    const firstName      = document.getElementById('firstName').value.trim();
+    const lastName       = document.getElementById('lastName').value.trim();
+    const emailAddr      = document.getElementById('emailAddr').value.trim();
+    const phoneNum       = document.getElementById('phoneNum').value.trim();
+    const projectType    = document.getElementById('projectType').value.trim();
+    const projectDetails = document.getElementById('projectDetails').value.trim();
+    const msgEl          = document.getElementById('formMsg');
+
+    // Validation
+    if (!firstName || !lastName || !emailAddr || !phoneNum || !projectType || !projectDetails) {
+      msgEl.style.display    = 'block';
+      msgEl.style.background = 'rgba(185,64,48,0.12)';
+      msgEl.style.color      = '#b94030';
+      msgEl.style.border     = '1px solid rgba(185,64,48,0.3)';
+      msgEl.textContent      = '\u26a0\ufe0f Please fill in all fields before submitting.';
+      return;
+    }
+
+    btn.textContent = 'Sending\u2026';
+    btn.disabled    = true;
+    msgEl.style.display = 'none';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'dc718091-bcd3-42fb-bc0b-04bd785875f6',
+          subject:    'New Quote Request \u2013 ' + projectType + ' from ' + firstName + ' ' + lastName,
+          name:    firstName + ' ' + lastName,
+          email:   emailAddr,
+          phone:   phoneNum,
+          service: projectType,
+          message: projectDetails
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        msgEl.style.display    = 'block';
+        msgEl.style.background = 'rgba(37,211,102,0.1)';
+        msgEl.style.color      = '#1a9e50';
+        msgEl.style.border     = '1px solid rgba(37,211,102,0.3)';
+        msgEl.textContent      = '\u2705 Message sent! We\'ll get back to you within one business day.';
+        btn.textContent        = 'Sent \u2713';
+        btn.style.background   = '#1a9e50';
+        btn.style.cursor       = 'default';
+      } else {
+        throw new Error('Web3Forms error');
+      }
+
+    } catch(e) {
+      msgEl.style.display    = 'block';
+      msgEl.style.background = 'rgba(185,64,48,0.12)';
+      msgEl.style.color      = '#b94030';
+      msgEl.style.border     = '1px solid rgba(185,64,48,0.3)';
+      msgEl.textContent      = '\u274c Something went wrong. Please try again or email us at contact@bricksengineering.com';
+      btn.textContent        = 'Send Message \u2192';
+      btn.disabled           = false;
+    }
   }
 
   // Scroll reveal
