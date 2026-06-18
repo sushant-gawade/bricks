@@ -46,6 +46,7 @@
   }
 
   .nav-logo span { color: var(--brick); }
+
   .nav-logo-img {
     height: 48px;
     width: auto;
@@ -432,9 +433,11 @@
     background: var(--navy);
     border-radius: 4px;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     position: relative;
     display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 12px 40px rgba(44,53,71,0.18);
+    border: 3px solid var(--light);
   }
 
   .about-img-inner {
@@ -933,7 +936,7 @@
 
   <div class="hero-left">
     <div class="hero-tag">Engineering Consultants</div>
-    <h1>Structuring<br>A <em>Better</em><br>Tomorrow</h1>
+    <img src="./logo.jpeg" alt="Bricks Engineering Consultants" style="width:min(320px,80%); height:auto; display:block; margin-bottom:1.5rem;">
     <p class="hero-sub">From concept to completion, Bricks Engineering delivers precise structural solutions for commercial, residential, and industrial projects.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Start Your Project</a>
@@ -941,11 +944,11 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">15<span>+</span></div>
+        <div class="stat-num">12<span>+</span></div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div>
-        <div class="stat-num">300<span>+</span></div>
+        <div class="stat-num">167<span>+</span></div>
         <div class="stat-label">Projects Delivered</div>
       </div>
       <div>
@@ -1058,12 +1061,26 @@
 <!-- ABOUT -->
 <div id="about">
   <div class="about-visual">
-    <div class="about-img-block">
-      <div class="about-img-inner">BRICKS<br>ENGINEERING<br>CONSULTANTS</div>
+    <!-- Founders name row ABOVE image -->
+    <div style="display:flex; gap:1rem; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap;">
+      <div style="text-align:left; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.15rem; color:var(--navy); letter-spacing:0.06em;">Swapnil Kelkar</div>
+        <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--brick);">Founder &mdash; M.E. Structures</div>
+      </div>
+      <div style="text-align:right; flex:1; min-width:120px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.15rem; color:var(--navy); letter-spacing:0.06em;">Akash Sanap</div>
+        <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--brick);">Founder &mdash; M.Tech Structures</div>
+      </div>
     </div>
-    <div class="about-accent">
-      <div class="about-accent-num">15+</div>
-      <div class="about-accent-text">Years of<br>Excellence</div>
+    <!-- Founder image -->
+    <div class="about-img-block" style="overflow:hidden; padding:0; background:var(--light); position:relative;">
+      <img src="./founder.png" alt="Swapnil Kelkar & Akash Sanap - Founders"
+           style="width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block;">
+    </div>
+    <!-- 12+ badge moved below image -->
+    <div style="display:flex; align-items:center; gap:1rem; margin-top:1rem; padding:0.8rem 1rem; background:var(--navy); border-radius:4px;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--brick); letter-spacing:0.06em; line-height:1;">12+</div>
+      <div style="font-size:0.75rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.8);">Years of<br>Excellence</div>
     </div>
   </div>
 
@@ -1222,14 +1239,15 @@
         <div class="contact-icon">📞</div>
         <div>
           <div class="contact-label">Phone</div>
-          <div class="contact-value">+91 9309157291</div>
+          <div class="contact-value">+91 97389 85555</div>
+          <div class="contact-value" style="margin-top:0.3rem;">+91 95452 13948</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value">contact@bricksengineering.com</div>
+          <div class="contact-value">design@bricksengineering.com</div>
         </div>
       </div>
       <div class="contact-item">
@@ -1297,7 +1315,7 @@
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a class="whatsapp-float" href="https://wa.me/919309157291" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/919738985555" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <span class="wa-label">Chat on WhatsApp</span>
   <div class="wa-btn">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -1379,7 +1397,7 @@
       msgEl.style.background = 'rgba(185,64,48,0.12)';
       msgEl.style.color      = '#b94030';
       msgEl.style.border     = '1px solid rgba(185,64,48,0.3)';
-      msgEl.textContent      = '\u274c Something went wrong. Please try again or email us at contact@bricksengineering.com';
+      msgEl.textContent      = '\u274c Something went wrong. Please try again or email us at design@bricksengineering.com';
       btn.textContent        = 'Send Message \u2192';
       btn.disabled           = false;
     }
