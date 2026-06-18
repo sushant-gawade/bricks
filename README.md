@@ -1,148 +1,86 @@
 # Bricks Engineering Consultants — Website
 
-## 📁 Folder Structure
-
-Sabhi files **ek hi folder** mein honi chahiye:
-
-```
-📁 bricks/
-├── index.html          → Main website (Home page)
-├── portfolio.html      → Portfolio page (All projects)
-├── logo.jpeg           → Company logo (Hero section)
-├── founder.png         → Founders image (About section)
-├── 1.jpeg              → Godrej Properties – Kolkata
-├── 2.jpeg              → Duville Riverdale – Kharadi
-├── 3.jpeg              → Delta Greenville – Thane
-├── 4.jpeg              → Atlantaa Enclave – Thane
-├── 5.jpeg              → Nxtra by Airtel – Navi Mumbai
-├── 6.jpeg              → Suroj Buildcon – Navi Mumbai
-├── 7.jpeg              → Rohan Anand – Somatane Phata
-├── 8.jpeg              → Rohan Madhuban – Bavdhan
-├── 9.jpeg              → Rohan Ipsita – Hinjewadi
-├── 10.jpeg             → Kanchan – Taljai Hills
-├── 11.jpeg             → Royal Exotica – Kondhwa
-├── 12.jpeg             → Mahindra Centralis – PCMC
-├── 13.jpeg             → Ruparel Urbana – Kurla
-├── 14.jpeg             → Ruparel Premia – Mulund
-├── 15.jpeg             → Hotel Blue-Nile – Pune
-├── 16.jpeg             → Yokohama Parking – Guyana
-├── 17.jpeg             → Criminal Court – Yerawada
-└── 18.jpeg             → Welspun One – Navi Mumbai
-```
+> **Client Project** — Website designed and developed for Bricks Engineering Consultants, a structural engineering firm based in Pune, India.
 
 ---
 
-## 🚀 Website Kaise Chalayein (Local)
+## 🛠️ Tech Stack
 
-### VS Code Live Server:
-1. VS Code mein folder open karo
-2. `index.html` pe right click karo
-3. **"Open with Live Server"** click karo
-4. Browser mein `http://127.0.0.1:5500/index.html` open hoga
+- HTML5
+- CSS3 (Custom Properties, Flexbox, Grid)
+- Vanilla JavaScript
+- [Web3Forms](https://web3forms.com) — Contact form email delivery
+- Google Fonts — Bebas Neue, Barlow
 
 ---
 
 ## 📄 Pages
 
-### index.html (Home Page)
-- **Nav Bar** — BRICKS. logo + navigation links
-- **Hero Section** — Company logo + tagline + stats
-- **Services Section** — 6 engineering services
-- **Projects Section** — 6 featured projects with images
-- **About Section** — Company info + founders photo
-- **Testimonials** — Client reviews
-- **Contact / Get a Quote** — Form (Web3Forms) + contact info
-- **WhatsApp Float Button** — Bottom right corner
-
-### portfolio.html (Portfolio Page)
-- **Hero** — Portfolio heading
-- **Stats Bar** — 20+ projects, 5 categories
-- **Filter Tabs** — All / Residential / Re-Development / Commercial / Institutional / Industrial
-- **All 18 Projects** — With images, developer, architect, location details
-- **WhatsApp Float Button**
+- **index.html** — Home page (Hero, Services, Projects, About, Testimonials, Contact)
+- **portfolio.html** — Full project portfolio with category filter
 
 ---
 
-## 📬 Contact Form (Web3Forms)
+## ✨ Features
 
-Form submissions `design@bricksengineering.com` pe jaate hain.
-
-**Web3Forms Access Key:** `dc718091-bcd3-42fb-bc0b-04bd785875f6`
-
-Form fields:
-- First Name, Last Name
-- Email Address
-- Phone Number
-- Project Type (dropdown)
-- Project Details (textarea)
+- Fully responsive — Mobile, Tablet, Desktop
+- Sticky navigation with hamburger menu
+- Filterable project portfolio (Residential, Commercial, Industrial, etc.)
+- Working contact form via Web3Forms
+- WhatsApp floating button
+- Smooth scroll & card hover animations
+- Founder section with team photo
 
 ---
 
-## 📞 Contact Details
+## 📂 File Structure
 
-| Type | Value |
-|------|-------|
-| 📧 Email | design@bricksengineering.com |
-| 📞 Phone 1 | +91 97389 85555 |
-| 📞 Phone 2 | +91 95452 13948 |
-| 💬 WhatsApp | +91 97389 85555 |
-| 📍 Address | 402, Devgiri Apartment, Kothrud, Pune - 411038 |
-
----
-
-## ✏️ Common Changes (VS Code mein kaise karein)
-
-### Text/Number change karna:
-1. `Ctrl + H` (Find & Replace)
-2. **Find** box mein purana text
-3. **Replace** box mein naya text
-4. `Replace All` click karo
-5. `Ctrl + S` save karo
-
-### Image replace karna:
-- Sirf new image ko **same naam** se folder mein daalo
-- Example: `1.jpeg` replace karna ho to new image ka naam bhi `1.jpeg` rakho
-
-### Project image add karna:
-- File ko number naam do (e.g. `1.jpeg`) 
-- Same folder mein daalo — automatically show hogi
+```
+bricks/
+├── index.html
+├── portfolio.html
+├── logo.jpeg
+├── founder.png
+└── 1.jpeg → 18.jpeg   (project images)
+```
 
 ---
 
-## 🎨 Design Colors
+## 🚀 Getting Started
 
-| Variable | Color | Use |
-|----------|-------|-----|
-| `--navy` | `#2c3547` | Background, Nav, Cards |
-| `--brick` | `#b94030` | Accent, Headings, Buttons |
-| `--cream` | `#f8f5f0` | Page background |
-| `--white` | `#ffffff` | Text on dark bg |
-| `--gray` | `#8a8f9a` | Subtext |
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/bricks-engineering.git
 
----
-
-## 📱 Responsive Breakpoints
-
-| Screen Size | Layout |
-|-------------|--------|
-| Desktop (1024px+) | 3 column grid |
-| Tablet (768–1024px) | 2 column grid |
-| Mobile (480–768px) | Single column |
-| Small Mobile (<480px) | Compact layout |
+# Open in browser
+# Use VS Code Live Server or any static file server
+```
 
 ---
 
-## ⚠️ Important Notes
+## 📬 Contact Form Setup
 
-1. **File naam mein spaces ya brackets nahi** — `index.html` ✅, `index (4).html` ❌
-2. **Sabhi files ek folder mein** rakho — alag alag folders mein mat rakhna
-3. **Image extensions same** honi chahiye — `1.jpeg` likha hai to `1.jpg` kaam nahi karega
-4. **VS Code Save:** `Ctrl + S` (Save As ke liye `Ctrl + Shift + S`)
+This project uses [Web3Forms](https://web3forms.com) for form submissions.
+
+To use your own key:
+1. Go to [web3forms.com](https://web3forms.com)
+2. Enter your email and get a free access key
+3. Replace the `access_key` value in `index.html`
+
+---
+
+## 📸 Project Images
+
+Add project images in the root folder named `1.jpeg` to `18.jpeg`.  
+If an image is missing, an emoji fallback is shown automatically.
+
+---
+
+## 📝 License
+
+This project was built for a client. All content, branding, and images belong to **Bricks Engineering Consultants**.  
+Code structure may be reused for reference purposes.
 
 ---
 
 *Bricks Engineering Consultants — Structuring A Better Tomorrow*
-
----
-
-> **Note:** This was a client project. The design, development, and content structure was built by me.
